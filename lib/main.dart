@@ -1,3 +1,4 @@
+import 'package:chess_vectors_flutter/chess_vectors_flutter.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -7,39 +8,20 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Bona Chess',
       theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // Try running your application with "flutter run". You'll see the
-        // application has a blue toolbar. Then, without quitting the app, try
-        // changing the primarySwatch below to Colors.green and then invoke
-        // "hot reload" (press "r" in the console where you ran "flutter run",
-        // or simply save your changes to "hot reload" in a Flutter IDE).
-        // Notice that the counter didn't reset back to zero; the application
-        // is not restarted.
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.grey,
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: const MyHomePage(title: 'Bona Chess'),
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({Key? key, required this.title}) : super(key: key);
-
-  // This widget is the home page of your application. It is stateful, meaning
-  // that it has a State object (defined below) that contains fields that affect
-  // how it looks.
-
-  // This class is the configuration for the state. It holds the values (in this
-  // case the title) provided by the parent (in this case the App widget) and
-  // used by the build method of the State. Fields in a Widget subclass are
-  // always marked "final".
 
   final String title;
 
@@ -48,68 +30,176 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-      _counter++;
-    });
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(widget.title),
+      ),
+      backgroundColor: Colors.grey[300],
+      body: const Center(
+        child: GameBoard(),
+      ),
+    );
   }
+}
+
+class GameBoard extends StatefulWidget {
+  const GameBoard({Key? key}) : super(key: key);
+
+  @override
+  State<GameBoard> createState() => _GameBoardState();
+}
+
+class _GameBoardState extends State<GameBoard> {
+  List<List<Widget>> board = [
+    [
+      Tile(row: 7, column: 0, isWhiteTile: true, piece: BlackRook()),
+      Tile(row: 7, column: 1, isWhiteTile: false, piece: BlackKnight()),
+      Tile(row: 7, column: 2, isWhiteTile: true, piece: BlackBishop()),
+      Tile(row: 7, column: 3, isWhiteTile: false, piece: BlackQueen()),
+      Tile(row: 7, column: 4, isWhiteTile: true, piece: BlackKing()),
+      Tile(row: 7, column: 5, isWhiteTile: false, piece: BlackBishop()),
+      Tile(row: 7, column: 6, isWhiteTile: true, piece: BlackKnight()),
+      Tile(row: 7, column: 7, isWhiteTile: false, piece: BlackRook()),
+    ],
+    [
+      Tile(row: 6, column: 0, isWhiteTile: false, piece: BlackPawn()),
+      Tile(row: 6, column: 1, isWhiteTile: true, piece: BlackPawn()),
+      Tile(row: 6, column: 2, isWhiteTile: false, piece: BlackPawn()),
+      Tile(row: 6, column: 3, isWhiteTile: true, piece: BlackPawn()),
+      Tile(row: 6, column: 4, isWhiteTile: false, piece: BlackPawn()),
+      Tile(row: 6, column: 5, isWhiteTile: true, piece: BlackPawn()),
+      Tile(row: 6, column: 6, isWhiteTile: false, piece: BlackPawn()),
+      Tile(row: 6, column: 7, isWhiteTile: true, piece: BlackPawn()),
+    ],
+    [
+      Tile(row: 5, column: 0, isWhiteTile: true),
+      Tile(row: 5, column: 1, isWhiteTile: false),
+      Tile(row: 5, column: 2, isWhiteTile: true),
+      Tile(row: 5, column: 3, isWhiteTile: false),
+      Tile(row: 5, column: 4, isWhiteTile: true),
+      Tile(row: 5, column: 5, isWhiteTile: false),
+      Tile(row: 5, column: 6, isWhiteTile: true),
+      Tile(row: 5, column: 7, isWhiteTile: false),
+    ],
+    [
+      Tile(row: 4, column: 0, isWhiteTile: false),
+      Tile(row: 4, column: 1, isWhiteTile: true),
+      Tile(row: 4, column: 2, isWhiteTile: false),
+      Tile(row: 4, column: 3, isWhiteTile: true),
+      Tile(row: 4, column: 4, isWhiteTile: false),
+      Tile(row: 4, column: 5, isWhiteTile: true),
+      Tile(row: 4, column: 6, isWhiteTile: false),
+      Tile(row: 4, column: 7, isWhiteTile: true),
+    ],
+    [
+      Tile(row: 3, column: 0, isWhiteTile: true),
+      Tile(row: 3, column: 1, isWhiteTile: false),
+      Tile(row: 3, column: 2, isWhiteTile: true),
+      Tile(row: 3, column: 3, isWhiteTile: false),
+      Tile(row: 3, column: 4, isWhiteTile: true),
+      Tile(row: 3, column: 5, isWhiteTile: false),
+      Tile(row: 3, column: 6, isWhiteTile: true),
+      Tile(row: 3, column: 7, isWhiteTile: false),
+    ],
+    [
+      Tile(row: 2, column: 0, isWhiteTile: false),
+      Tile(row: 2, column: 1, isWhiteTile: true),
+      Tile(row: 2, column: 2, isWhiteTile: false),
+      Tile(row: 2, column: 3, isWhiteTile: true),
+      Tile(row: 2, column: 4, isWhiteTile: false),
+      Tile(row: 2, column: 5, isWhiteTile: true),
+      Tile(row: 2, column: 6, isWhiteTile: false),
+      Tile(row: 2, column: 7, isWhiteTile: true),
+    ],
+    [
+      Tile(row: 3, column: 0, isWhiteTile: true, piece: WhitePawn()),
+      Tile(row: 3, column: 1, isWhiteTile: false, piece: WhitePawn()),
+      Tile(row: 3, column: 2, isWhiteTile: true, piece: WhitePawn()),
+      Tile(row: 3, column: 3, isWhiteTile: false, piece: WhitePawn()),
+      Tile(row: 3, column: 4, isWhiteTile: true, piece: WhitePawn()),
+      Tile(row: 3, column: 5, isWhiteTile: false, piece: WhitePawn()),
+      Tile(row: 3, column: 6, isWhiteTile: true, piece: WhitePawn()),
+      Tile(row: 3, column: 7, isWhiteTile: false, piece: WhitePawn()),
+    ],
+    [
+      Tile(row: 2, column: 0, isWhiteTile: false, piece: WhiteRook()),
+      Tile(row: 2, column: 1, isWhiteTile: true, piece: WhiteKnight()),
+      Tile(row: 2, column: 2, isWhiteTile: false, piece: WhiteBishop()),
+      Tile(row: 2, column: 3, isWhiteTile: true, piece: WhiteQueen()),
+      Tile(row: 2, column: 4, isWhiteTile: false, piece: WhiteKing()),
+      Tile(row: 2, column: 5, isWhiteTile: true, piece: WhiteBishop()),
+      Tile(row: 2, column: 6, isWhiteTile: false, piece: WhiteKnight()),
+      Tile(row: 2, column: 7, isWhiteTile: true, piece: WhiteRook()),
+    ],
+  ];
 
   @override
   Widget build(BuildContext context) {
-    // This method is rerun every time setState is called, for instance as done
-    // by the _incrementCounter method above.
-    //
-    // The Flutter framework has been optimized to make rerunning build methods
-    // fast, so that you can just rebuild anything that needs updating rather
-    // than having to individually change instances of widgets.
-    return Scaffold(
-      appBar: AppBar(
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
-        title: Text(widget.title),
-      ),
-      body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
-        child: Column(
-          // Column is also a layout widget. It takes a list of children and
-          // arranges them vertically. By default, it sizes itself to fit its
-          // children horizontally, and tries to be as tall as its parent.
-          //
-          // Invoke "debug painting" (press "p" in the console, choose the
-          // "Toggle Debug Paint" action from the Flutter Inspector in Android
-          // Studio, or the "Toggle Debug Paint" command in Visual Studio Code)
-          // to see the wireframe for each widget.
-          //
-          // Column has various properties to control how it sizes itself and
-          // how it positions its children. Here we use mainAxisAlignment to
-          // center the children vertically; the main axis here is the vertical
-          // axis because Columns are vertical (the cross axis would be
-          // horizontal).
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Row(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
-            ),
-          ],
+          children: board.elementAt(0),
         ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: board.elementAt(1),
+        ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: board.elementAt(2),
+        ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: board.elementAt(3),
+        ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: board.elementAt(4),
+        ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: board.elementAt(5),
+        ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: board.elementAt(6),
+        ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: board.elementAt(7),
+        ),
+      ],
+    );
+  }
+}
+
+class Tile extends StatelessWidget {
+  const Tile(
+      {Key? key,
+      required this.row,
+      required this.column,
+      required this.isWhiteTile,
+      this.piece})
+      : super(key: key);
+  final bool isWhiteTile;
+  final Widget? piece;
+  final int row;
+  final int column;
+  static double tileSize = 47;
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      height: tileSize,
+      width: tileSize,
+      child: Container(
+        child: piece,
+        color: isWhiteTile ? Colors.white : Colors.grey[700],
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }
