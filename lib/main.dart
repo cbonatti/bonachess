@@ -1,5 +1,13 @@
+import 'package:bonachess/pieces/pawn.dart';
 import 'package:chess_vectors_flutter/chess_vectors_flutter.dart';
 import 'package:flutter/material.dart';
+
+import 'pieces/base/piece.dart';
+import 'pieces/bishop.dart';
+import 'pieces/king.dart';
+import 'pieces/knight.dart';
+import 'pieces/queen.dart';
+import 'pieces/rook.dart';
 
 void main() {
   runApp(const MyApp());
@@ -54,24 +62,24 @@ class GameBoard extends StatefulWidget {
 class _GameBoardState extends State<GameBoard> {
   List<List<Widget>> board = [
     [
-      Tile(row: 7, column: 0, isWhiteTile: true, piece: BlackRook()),
-      Tile(row: 7, column: 1, isWhiteTile: false, piece: BlackKnight()),
-      Tile(row: 7, column: 2, isWhiteTile: true, piece: BlackBishop()),
-      Tile(row: 7, column: 3, isWhiteTile: false, piece: BlackQueen()),
-      Tile(row: 7, column: 4, isWhiteTile: true, piece: BlackKing()),
-      Tile(row: 7, column: 5, isWhiteTile: false, piece: BlackBishop()),
-      Tile(row: 7, column: 6, isWhiteTile: true, piece: BlackKnight()),
-      Tile(row: 7, column: 7, isWhiteTile: false, piece: BlackRook()),
+      Tile(row: 7, column: 0, isWhiteTile: true, piece: RookPiece(false)),
+      Tile(row: 7, column: 1, isWhiteTile: false, piece: KnightPiece(false)),
+      Tile(row: 7, column: 2, isWhiteTile: true, piece: BishopPiece(false)),
+      Tile(row: 7, column: 3, isWhiteTile: false, piece: QueenPiece(false)),
+      Tile(row: 7, column: 4, isWhiteTile: true, piece: KingPiece(false)),
+      Tile(row: 7, column: 5, isWhiteTile: false, piece: BishopPiece(false)),
+      Tile(row: 7, column: 6, isWhiteTile: true, piece: KnightPiece(false)),
+      Tile(row: 7, column: 7, isWhiteTile: false, piece: RookPiece(false)),
     ],
     [
-      Tile(row: 6, column: 0, isWhiteTile: false, piece: BlackPawn()),
-      Tile(row: 6, column: 1, isWhiteTile: true, piece: BlackPawn()),
-      Tile(row: 6, column: 2, isWhiteTile: false, piece: BlackPawn()),
-      Tile(row: 6, column: 3, isWhiteTile: true, piece: BlackPawn()),
-      Tile(row: 6, column: 4, isWhiteTile: false, piece: BlackPawn()),
-      Tile(row: 6, column: 5, isWhiteTile: true, piece: BlackPawn()),
-      Tile(row: 6, column: 6, isWhiteTile: false, piece: BlackPawn()),
-      Tile(row: 6, column: 7, isWhiteTile: true, piece: BlackPawn()),
+      Tile(row: 6, column: 0, isWhiteTile: false, piece: PawnPiece(false)),
+      Tile(row: 6, column: 1, isWhiteTile: true, piece: PawnPiece(false)),
+      Tile(row: 6, column: 2, isWhiteTile: false, piece: PawnPiece(false)),
+      Tile(row: 6, column: 3, isWhiteTile: true, piece: PawnPiece(false)),
+      Tile(row: 6, column: 4, isWhiteTile: false, piece: PawnPiece(false)),
+      Tile(row: 6, column: 5, isWhiteTile: true, piece: PawnPiece(false)),
+      Tile(row: 6, column: 6, isWhiteTile: false, piece: PawnPiece(false)),
+      Tile(row: 6, column: 7, isWhiteTile: true, piece: PawnPiece(false)),
     ],
     [
       Tile(row: 5, column: 0, isWhiteTile: true),
@@ -114,24 +122,24 @@ class _GameBoardState extends State<GameBoard> {
       Tile(row: 2, column: 7, isWhiteTile: true),
     ],
     [
-      Tile(row: 3, column: 0, isWhiteTile: true, piece: WhitePawn()),
-      Tile(row: 3, column: 1, isWhiteTile: false, piece: WhitePawn()),
-      Tile(row: 3, column: 2, isWhiteTile: true, piece: WhitePawn()),
-      Tile(row: 3, column: 3, isWhiteTile: false, piece: WhitePawn()),
-      Tile(row: 3, column: 4, isWhiteTile: true, piece: WhitePawn()),
-      Tile(row: 3, column: 5, isWhiteTile: false, piece: WhitePawn()),
-      Tile(row: 3, column: 6, isWhiteTile: true, piece: WhitePawn()),
-      Tile(row: 3, column: 7, isWhiteTile: false, piece: WhitePawn()),
+      Tile(row: 3, column: 0, isWhiteTile: true, piece: PawnPiece(true)),
+      Tile(row: 3, column: 1, isWhiteTile: false, piece: PawnPiece(true)),
+      Tile(row: 3, column: 2, isWhiteTile: true, piece: PawnPiece(true)),
+      Tile(row: 3, column: 3, isWhiteTile: false, piece: PawnPiece(true)),
+      Tile(row: 3, column: 4, isWhiteTile: true, piece: PawnPiece(true)),
+      Tile(row: 3, column: 5, isWhiteTile: false, piece: PawnPiece(true)),
+      Tile(row: 3, column: 6, isWhiteTile: true, piece: PawnPiece(true)),
+      Tile(row: 3, column: 7, isWhiteTile: false, piece: PawnPiece(true)),
     ],
     [
-      Tile(row: 2, column: 0, isWhiteTile: false, piece: WhiteRook()),
-      Tile(row: 2, column: 1, isWhiteTile: true, piece: WhiteKnight()),
-      Tile(row: 2, column: 2, isWhiteTile: false, piece: WhiteBishop()),
-      Tile(row: 2, column: 3, isWhiteTile: true, piece: WhiteQueen()),
-      Tile(row: 2, column: 4, isWhiteTile: false, piece: WhiteKing()),
-      Tile(row: 2, column: 5, isWhiteTile: true, piece: WhiteBishop()),
-      Tile(row: 2, column: 6, isWhiteTile: false, piece: WhiteKnight()),
-      Tile(row: 2, column: 7, isWhiteTile: true, piece: WhiteRook()),
+      Tile(row: 2, column: 0, isWhiteTile: false, piece: RookPiece(true)),
+      Tile(row: 2, column: 1, isWhiteTile: true, piece: KnightPiece(true)),
+      Tile(row: 2, column: 2, isWhiteTile: false, piece: BishopPiece(true)),
+      Tile(row: 2, column: 3, isWhiteTile: true, piece: KingPiece(true)),
+      Tile(row: 2, column: 4, isWhiteTile: false, piece: QueenPiece(true)),
+      Tile(row: 2, column: 5, isWhiteTile: true, piece: BishopPiece(true)),
+      Tile(row: 2, column: 6, isWhiteTile: false, piece: KnightPiece(true)),
+      Tile(row: 2, column: 7, isWhiteTile: true, piece: RookPiece(true)),
     ],
   ];
 
@@ -186,7 +194,7 @@ class Tile extends StatelessWidget {
       this.piece})
       : super(key: key);
   final bool isWhiteTile;
-  final Widget? piece;
+  final Piece? piece;
   final int row;
   final int column;
   static double tileSize = 47;
@@ -197,7 +205,7 @@ class Tile extends StatelessWidget {
       height: tileSize,
       width: tileSize,
       child: Container(
-        child: piece,
+        child: piece?.sprite,
         color: isWhiteTile ? Colors.white : Colors.grey[700],
       ),
     );
